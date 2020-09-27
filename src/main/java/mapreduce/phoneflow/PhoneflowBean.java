@@ -49,7 +49,7 @@ public class PhoneflowBean implements Writable {
     }
 
     /**
-     * 序列化方法
+     * 序列化方法（必须在反序列化方法之前）
      * @param dataOutput：框架提供的数据出口
      * @throws IOException
      */
@@ -58,7 +58,13 @@ public class PhoneflowBean implements Writable {
         dataOutput.writeLong(downFlow);
     }
 
+    /**
+     * 反序列化方法（必须在序列化方法之后）
+     * @param dataInput：框架提供的数据来源
+     * @throws IOException
+     */
     public void readFields(DataInput dataInput) throws IOException {
-
+        upFlow = dataInput.readLong();
+        downFlow = dataInput.readLong();
     }
 }
