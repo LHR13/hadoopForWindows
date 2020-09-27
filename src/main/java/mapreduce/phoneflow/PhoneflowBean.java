@@ -1,0 +1,64 @@
+package mapreduce.phoneflow;
+
+import org.apache.hadoop.io.Writable;
+
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+
+public class PhoneflowBean implements Writable {
+
+    private long upFlow;
+    private long downFlow;
+
+    public long getUpFlow() {
+        return upFlow;
+    }
+
+    public void setUpFlow(long upFlow) {
+        this.upFlow = upFlow;
+    }
+
+    public long getDownFlow() {
+        return downFlow;
+    }
+
+    public void setDownFlow(long downFlow) {
+        this.downFlow = downFlow;
+    }
+
+    public PhoneflowBean(long upFlow, long downFlow) {
+        this.upFlow = upFlow;
+        this.downFlow = downFlow;
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneflowBean{" +
+                "upFlow=" + upFlow +
+                ", downFlow=" + downFlow +
+                '}';
+    }
+
+    public void set(long upFlow, long downFlow) {
+        this.upFlow = upFlow;
+        this.downFlow = downFlow;
+    }
+
+    public PhoneflowBean() {
+    }
+
+    /**
+     * 序列化方法
+     * @param dataOutput：框架提供的数据出口
+     * @throws IOException
+     */
+    public void write(DataOutput dataOutput) throws IOException {
+        dataOutput.writeLong(upFlow);
+        dataOutput.writeLong(downFlow);
+    }
+
+    public void readFields(DataInput dataInput) throws IOException {
+
+    }
+}
