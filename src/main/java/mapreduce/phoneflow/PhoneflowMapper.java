@@ -13,7 +13,6 @@ public class PhoneflowMapper extends Mapper<LongWritable, Text, Text, PhoneflowB
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String[] fields = value.toString().split("\t");
-        System.out.println(fields.length);
         phone.set(fields[1]);
         long upflow = Long.parseLong(fields[fields.length - 3]);
         long downflow = Long.parseLong(fields[fields.length - 2]);
