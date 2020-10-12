@@ -37,7 +37,8 @@ public class PhoneflowBean implements Writable {
         return "PhoneflowBean{" +
                 "upFlow=" + upFlow +
                 ", downFlow=" + downFlow +
-                '}';
+                ", sumFlow= " + (upFlow + downFlow) +
+                " }";
     }
 
     public void set(long upFlow, long downFlow) {
